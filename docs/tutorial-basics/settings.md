@@ -13,7 +13,7 @@ In the file explorer at the bottom, open `Scenes` folder. Here, double-click `Op
 The main bottleneck here is that you only see first few settings because of the scrolling.
 If you want to bypass that, open `Canvas > Scroll View > Viewport`, and disable the `Rect Mask 2D` component with a checkbox.
 
-:::warning
+:::caution
 Make sure to re-enable that later!
 :::
 
@@ -41,7 +41,7 @@ You can move the `Value` slider (inside of a Slider component inside of the Slid
 
 You can change the options presented by changing the Options table thing inside of the Dropdown component of your setting. You can use `+` and `-` at the bottom to add or remove options. Then you can change the default value to whatever you would like in the Dropdown Setting component.
 
-:::warning
+:::caution
 Counting starts from 0, so the first option will be 0, second will be 1 and so on.
 :::
 
