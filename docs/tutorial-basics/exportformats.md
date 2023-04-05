@@ -26,4 +26,39 @@ Both of them are switch statements.
 
 That about all you need to know. You can look at how existing export formats are implemented in order to be more familiar with this. Unfortunately you will need to know quite a lot of coding to add your own, but I believe in you.
 
+## Falling back to V3 if no modded cells
+
+This is a feature I recommened every mod with custom saving format have. It will make folks in #vaults channel of Cell Machine Discord a lot less angry.
+
+A good way to do this would be to replace
+
+```cs
+int format = PlayerPrefs.GetInt("ExportFormat", 2) + 1;
+```
+
+and
+
+```cs
+switch (PlayerPrefs.GetInt("ExportFormat", 2))
+```
+
+to
+
+```cs
+int format = 3; // 3 is the representation of V3
+foreach (Cell cell in CellFunctions.cellList)
+{
+    if ((int)cell.cellType > 8) { // if any modded cell is found, ...
+        ExportFormat = PlayerPrefs.GetInt("ExportFormat"); // use your custom saving format, ...
+        break; // and stop checking!
+    }
+}
+```
+
+and
+
+```cs
+switch (format - 1)
+```
+
 You are probably wondering on how to add the saving code preference to the Settings menu. Next article? How did you guess.
